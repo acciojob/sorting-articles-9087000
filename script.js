@@ -1,17 +1,20 @@
-const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'An Old Dog', 'Oh, Sleeper', 'Anywhere But Here', 'The Midway State'];
+//your code here
+//your code here
+const bands = ['The Beatles', 'Led Zeppelin', 'Pink Floyd', 'Aerosmith'];
 
-// Function to strip "a", "an", "the" from the beginning of a string
-function strip(article) {
-    return article.replace(/^(a |an |the )/i, '').trim();
+// Define the strip function to remove common words from band names
+function strip(word) {
+const regex = /^(a |the |an )/i;
+return word.replace(regex, '').trim();
 }
 
-// Sorting the bands ignoring "a", "an", "the"
-const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+// Sort the bands array using the strip function to ignore common words
+const sortedBands = bands.sort((a, b) => (strip(a) > strip(b)) ? 1 : -1);
 
-// Rendering sorted list
-const ul = document.getElementById('band');
+// Update the DOM with the sorted band names
+const bandList = document.getElementById('band');
 sortedBands.forEach(band => {
-    const li = document.createElement('li');
-    li.textContent = band;
-    ul.appendChild(li);
+const listItem = document.createElement('li');
+listItem.textContent = band;
+bandList.appendChild(listItem);
 });
